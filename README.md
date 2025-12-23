@@ -21,7 +21,7 @@
 ## 4. Tech Stack
 | 구분 | 기술 스택 | 비고 |
 | :--- | :--- | :--- |
-| **Language** | Python 3.9 | - |
+| **Language** | Python 3.12.3 | - |
 | **Ingestion** | Scrapy (News), yfinance (Price) ,Kafka | Real-time Streaming |
 | **Processing** | PySpark, Spark Streaming | Batch & Stream Processing |
 | **Storage** | AWS S3, PostgreSQL | Data Lake & Warehouse |
