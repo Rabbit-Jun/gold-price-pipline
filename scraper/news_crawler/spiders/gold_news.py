@@ -13,10 +13,10 @@ class GoldNewsSpider(scrapy.Spider):
         for article in articles:
             title = article.css('div.n0jPhd::text').get()
             link = article.css('a.WlydOe::attr(href)').get()
-            print(f'Link: {link}')
-
+            date = article.css('div.OSrXXb span::text').get()
             yield {
                 'title': title,
                 'link': link,
+                'date': date
             }
             
