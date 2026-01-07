@@ -1,0 +1,26 @@
+# 1. Python 관련
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# 2. Scrapy 관련
+.scrapy/
+*.json
+*.csv
+*.xml
+
+# 3. 프로젝트 및 도구 관련
+.idea/
+.vscode/
+.DS_Store
+*.log
+
+# 4. 데이터 및 보안 관련
+data/
+*.db
+*.sqlite3
+.env
