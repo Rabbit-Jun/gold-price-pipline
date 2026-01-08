@@ -4,7 +4,7 @@ import scrapy
 class GoldNewsSpider(scrapy.Spider):
     name = "gold_news"
     allowed_domains = []
-    start_urls = ["https://www.google.com/search?sca_esv=f26a4e8abbd57b5a&rlz=1C1CHZN_enKR1141KR1142&q=%EA%B8%88%EA%B0%92&tbm=nws&source=lnms&fbs=AIIjpHyDg0Pef0CibV20xjIa-FReIKmAxsMTxuQCKLhb9OUJki0DxYQJ2cWp-4Nzr6A22He1IKbQbeHusnfe1kqhyqNHx5CQN_aqpnRMR3CU9P0zSU-_uxYMp_SdvAqm4SGs_ObaLQZ4SuREUs9e74R9GsZEhlj1uDVaEiuceIdQI1T3paahir14VXrwQXsdqGM9ldtl-LlHIJhA-_ZvF8fk_5nEA5JnudwQ2xDyOcsxNXiIpWVQCao&sa=X&ved=2ahUKEwju_6255OSRAxU8UPUHHe8SESwQ0pQJegQIFRAB&biw=871&bih=827&dpr=1.1"]
+    start_urls = ["https://www.google.com/search?q=%EA%B8%88%EA%B0%92&sca_esv=f26a4e8abbd57b5a&rlz=1C1CHZN_enKR1141KR1142&tbm=nws&ei=AUFfab36F5Hr1e8Pt-mlgAk&start=0&sa=N&story=Gh8IjAEaGgoTc3RvcnlfbGFiZWxfcGFydGlhbBID6riIMi8KJcfl4_6RorD28gG_nM2em8DW6COjrOjKl8PPgw3QvaXorq6vkHwQjsqwqBAYBXICEAI&fcs=ABHuY3SskcHLMsP9iQz0wGn0XfN8SKI7DQ&ved=2ahUKEwj9_p2tm_uRAxWRdfUHHbd0CZA4ChDy0wN6BAgGEAQ&biw=1920&bih=911&dpr=1&aic=0"]
 
     def parse(self, response):
         articles= response.css('div.SoaBEf')
@@ -19,3 +19,6 @@ class GoldNewsSpider(scrapy.Spider):
                 'date': date
             }
             
+        next_page = response.css('a#pnnext::attr(href)').get()
+        if next_page:
+            yield response.follow(next_page, self.parse)
